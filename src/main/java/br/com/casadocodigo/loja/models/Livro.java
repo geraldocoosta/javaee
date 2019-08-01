@@ -2,6 +2,7 @@ package br.com.casadocodigo.loja.models;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,10 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
@@ -43,6 +45,9 @@ public class Livro {
 	@NotNull
 	@Min(80)
 	private Integer numeroDePaginas;
+
+	@Temporal(TemporalType.DATE)
+	private Calendar dataPublicacao = Calendar.getInstance();
 
 	@ManyToMany
 	@Size(min = 1, max = 255)
@@ -89,10 +94,19 @@ public class Livro {
 		this.autores = autores;
 	}
 
+	public Calendar getDataPublicacao() {
+		return dataPublicacao;
+	}
+
+	public void setDataPublicacao(Calendar dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
+
 	@Override
 	public String toString() {
 		return "Livro [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", preco=" + preco
-				+ ", numeroDePaginas=" + numeroDePaginas + ", autores=" + autores + "]";
+				+ ", numeroDePaginas=" + numeroDePaginas + ", dataPublicacao=" + dataPublicacao + ", autores=" + autores
+				+ "]";
 	}
 
 }

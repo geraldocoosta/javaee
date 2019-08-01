@@ -32,14 +32,19 @@
 	<div>
 		<h:outputLabel value="Autores" />
 		<h:selectManyListbox required="true"
-			value="#{adminLivrosBean.autoresId}" converter="javax.faces.Integer"
+			value="#{adminLivrosBean.livro.autores}" converter="autorConverter"
 			id="autores">
 
 			<f:selectItems value="#{adminLivrosBean.autores}" var="autor"
-				itemValue="#{autor.id}" itemLabel="#{autor.nome}" />
+				itemValue="#{autor}" itemLabel="#{autor.nome}" />
 
 		</h:selectManyListbox>
 		<h:message for="autores" />
+	</div>
+	<div>
+		<h:outputLabel for="data-publicacao" value="Data de Publicação"/>
+		<h:inputText id="data-publicacao"  value="#{adminLivrosBean.livro.dataPublicacao}" /> 
+		<h:message for="data-publicacao" />
 	</div>
 	<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}" />
 </h:form>
