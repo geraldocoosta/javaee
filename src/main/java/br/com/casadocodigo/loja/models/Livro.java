@@ -10,6 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Livro {
@@ -17,12 +25,28 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	@NotNull
+	@NotBlank
 	private String titulo;
+
 	@Lob
+	@NotNull
+	@NotBlank
+	@Length(min = 10)
 	private String descricao;
+
+	@NotNull
+	@DecimalMin("20")
 	private BigDecimal preco;
+
+	@NotNull
+	@Min(80)
 	private Integer numeroDePaginas;
+
 	@ManyToMany
+	@Size(min = 1, max = 255)
+	@NotNull
 	private List<Autor> autores = new ArrayList<>();
 
 	public String getTitulo() {
