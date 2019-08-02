@@ -53,6 +53,9 @@ public class Livro {
 	@Size(min = 1, max = 255)
 	@NotNull
 	private List<Autor> autores = new ArrayList<>();
+	
+	
+	private String capaPath;
 
 	public String getTitulo() {
 		return titulo;
@@ -109,4 +112,11 @@ public class Livro {
 				+ "]";
 	}
 
+	public void setCapaPath(String capaPath) {
+		this.capaPath = capaPath;
+	}
+
+	public String getCapaPath() {
+		return capaPath;
+	}
 }

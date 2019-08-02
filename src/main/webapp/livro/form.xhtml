@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:form>
+<h:form enctype="multipart/form-data">
 	<div>
 		<h:outputLabel value="Título" />
 		<h:inputText id="titulo" required="true"
@@ -42,9 +42,15 @@
 		<h:message for="autores" />
 	</div>
 	<div>
-		<h:outputLabel for="data-publicacao" value="Data de Publicação"/>
-		<h:inputText id="data-publicacao"  value="#{adminLivrosBean.livro.dataPublicacao}" /> 
+		<h:outputLabel for="data-publicacao" value="Data de Publicação" />
+		<h:inputText id="data-publicacao"
+			value="#{adminLivrosBean.livro.dataPublicacao}" />
 		<h:message for="data-publicacao" />
+	</div>
+	<div>
+		<h:outputLabel value="Capa do Livro" for="capa-livro" />
+		<h:inputFile value="#{adminLivrosBean.capaLivro}" id="capa-livro" />
+		<h:message for="capa-livro" />
 	</div>
 	<h:commandButton value="Cadastrar" action="#{adminLivrosBean.salvar}" />
 </h:form>
