@@ -57,6 +57,14 @@ public class Livro {
 	
 	private String capaPath;
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -107,7 +115,7 @@ public class Livro {
 
 	@Override
 	public String toString() {
-		return "Livro [id=" + id + ", titulo=" + titulo + ", descricao=" + descricao + ", preco=" + preco
+		return "Livro [id=" + getId() + ", titulo=" + titulo + ", descricao=" + descricao + ", preco=" + preco
 				+ ", numeroDePaginas=" + numeroDePaginas + ", dataPublicacao=" + dataPublicacao + ", autores=" + autores
 				+ "]";
 	}
